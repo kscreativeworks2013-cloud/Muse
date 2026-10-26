@@ -57,6 +57,33 @@
   .contact p{color:var(--sub);max-width:560px;margin:0 auto 12px;font-size:15px}
   .contact .mail{font-family:Georgia,serif;font-size:clamp(18px,3.4vw,26px);letter-spacing:.04em}
   .contact .mail a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent)}
+  /* Contact form — デジタル庁デザインシステムのフォーム指針＋Apple HIGに準拠 */
+  .cform{max-width:640px;margin:44px auto 0;text-align:left}
+  .cform .form-lead{font-size:13px;color:var(--sub);margin:0 0 26px;max-width:none;line-height:1.7}
+  .cform .req-mark{color:#ff9d94;font-weight:600;white-space:nowrap}
+  .cform .opt-mark{color:var(--sub);font-weight:400;white-space:nowrap}
+  .field{margin-bottom:30px}
+  .field label{display:block;font-size:14px;font-weight:600;letter-spacing:.05em;margin-bottom:6px}
+  .field label .req-mark,.field label .opt-mark{font-size:12px;margin-left:8px;letter-spacing:.02em}
+  .field .support{font-size:13px;color:var(--sub);margin:0 0 8px;max-width:none;line-height:1.7}
+  .field input[type="text"],.field input[type="email"],.field select,.field textarea{width:100%;background:var(--card);border:1px solid #6f6650;border-radius:4px;color:var(--ink);font:inherit;font-size:16px;padding:12px 14px;min-height:48px}
+  .field textarea{min-height:160px;line-height:1.7;resize:vertical}
+  .field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23c9a86a' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:42px}
+  .field select option{background:var(--card);color:var(--ink)}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+  .field .error{display:none;font-size:13px;color:#ff9d94;margin:8px 0 0;max-width:none;line-height:1.7}
+  .field.has-error .error{display:block}
+  .field.has-error input,.field.has-error select,.field.has-error textarea{border-color:#ff9d94}
+  .error-summary{display:none;border:1px solid #ff9d94;background:rgba(255,157,148,.07);padding:16px 18px;margin:0 0 28px;font-size:14px;text-align:left}
+  .error-summary.show{display:block}
+  .cform .error-summary p{margin:0 0 8px;max-width:none;color:#ff9d94;font-weight:600}
+  .error-summary ul{margin:0;padding-left:20px;line-height:1.8}
+  .error-summary a{color:#ff9d94}
+  .submit-btn{display:block;width:100%;min-height:56px;background:var(--accent);color:#171410;border:none;border-radius:4px;font:inherit;font-size:15px;font-weight:600;letter-spacing:.14em;cursor:pointer;padding:14px 20px}
+  .submit-btn:hover{background:#dcc088}
+  .submit-btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+  .cform .mail-note{font-size:13px;color:var(--sub);margin:14px 0 0;max-width:none;line-height:1.7}
+  .contact-alt{margin-top:56px;padding-top:38px;border-top:1px solid var(--line)}
   footer{padding:44px 0 54px;border-top:1px solid var(--line);color:var(--sub);font-size:12px;letter-spacing:.1em}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   @media (max-width:600px){ nav a{margin-left:16px} .hero{padding:150px 0 90px} section{padding:64px 0} }
@@ -182,10 +209,66 @@
   <div class="wrap">
     <div class="sec-en">Contact</div>
     <h2>お問い合わせ</h2>
-    <p>撮影のご相談は、メールまたは Instagram の DM からお気軽にどうぞ。</p>
-    <p class="mail"><a href="mailto:kscreativeworks2013@gmail.com">kscreativeworks2013@gmail.com</a></p>
-    <p style="margin-top:22px">Instagram: <a href="https://www.instagram.com/ksphotoswork" target="_blank" rel="noopener" style="color:var(--accent)">@ksphotoswork</a></p>
-    <a class="cta" href="https://www.instagram.com/ksphotoswork" target="_blank" rel="noopener">Instagramで相談する</a>
+    <p>撮影のご相談は、下記フォーム、メール、または Instagram の DM からお気軽にどうぞ。</p>
+
+    <form class="cform" id="contactForm" action="mailto:kscreativeworks2013@gmail.com" method="post" enctype="text/plain" novalidate>
+      <p class="form-lead">「<span class="req-mark">※必須</span>」のついた項目は、必ずご入力ください。</p>
+
+      <div class="error-summary" id="errorSummary" tabindex="-1">
+        <p>入力内容に不備があります。次の項目をご確認ください。</p>
+        <ul id="errorSummaryList"></ul>
+      </div>
+
+      <div class="field" id="field-name">
+        <label for="cf-name">お名前<span class="req-mark">※必須</span></label>
+        <p class="support" id="cf-name-support">例：山田 花子</p>
+        <input type="text" id="cf-name" name="name" autocomplete="name" required aria-describedby="cf-name-support">
+        <p class="error" id="cf-name-error"></p>
+      </div>
+
+      <div class="field" id="field-company">
+        <label for="cf-company">会社名・ブランド名<span class="opt-mark">※任意</span></label>
+        <p class="support" id="cf-company-support">個人でご相談の方は、空欄のままでかまいません。</p>
+        <input type="text" id="cf-company" name="company" autocomplete="organization" aria-describedby="cf-company-support">
+        <p class="error" id="cf-company-error"></p>
+      </div>
+
+      <div class="field" id="field-email">
+        <label for="cf-email">メールアドレス<span class="req-mark">※必須</span></label>
+        <p class="support" id="cf-email-support">返信先のアドレスをご入力ください。例：name@example.com</p>
+        <input type="email" id="cf-email" name="email" autocomplete="email" inputmode="email" required aria-describedby="cf-email-support">
+        <p class="error" id="cf-email-error"></p>
+      </div>
+
+      <div class="field" id="field-type">
+        <label for="cf-type">お問い合わせ種別<span class="req-mark">※必須</span></label>
+        <p class="support" id="cf-type-support">ご相談の内容に最も近いものを選んでください。</p>
+        <select id="cf-type" name="type" required aria-describedby="cf-type-support">
+          <option value="" selected>選択してください</option>
+          <option value="撮影のご依頼">撮影のご依頼</option>
+          <option value="AI動画制作">AI動画制作</option>
+          <option value="その他">その他</option>
+        </select>
+        <p class="error" id="cf-type-error"></p>
+      </div>
+
+      <div class="field" id="field-message">
+        <label for="cf-message">お問い合わせ内容<span class="req-mark">※必須</span></label>
+        <p class="support" id="cf-message-support">撮影の内容、ご希望の時期・場所、ご予算感など、分かる範囲でご記入ください。</p>
+        <textarea id="cf-message" name="message" required aria-describedby="cf-message-support"></textarea>
+        <p class="error" id="cf-message-error"></p>
+      </div>
+
+      <button type="submit" class="submit-btn">入力内容をメールで送信する</button>
+      <p class="mail-note">送信ボタンを押すと、お使いのメールソフト（メールアプリ）が開き、入力内容が本文に入った状態で表示されます。内容をご確認のうえ、そのまま送信してください。</p>
+    </form>
+
+    <div class="contact-alt">
+      <p>フォームからうまく送れない場合は、メールまたは Instagram からもご連絡いただけます。</p>
+      <p class="mail"><a href="mailto:kscreativeworks2013@gmail.com">kscreativeworks2013@gmail.com</a></p>
+      <p style="margin-top:22px">Instagram: <a href="https://www.instagram.com/ksphotoswork" target="_blank" rel="noopener" style="color:var(--accent)">@ksphotoswork</a></p>
+      <a class="cta" href="https://www.instagram.com/ksphotoswork" target="_blank" rel="noopener">Instagramで相談する</a>
+    </div>
   </div>
 </section>
 
@@ -195,5 +278,103 @@
     <div>TOKYO, JAPAN</div>
   </div>
 </footer>
+<script>
+(function(){
+  var MAILTO = 'kscreativeworks2013@gmail.com';
+  var form = document.getElementById('contactForm');
+  var summary = document.getElementById('errorSummary');
+  var summaryList = document.getElementById('errorSummaryList');
+
+  var defs = [
+    { key:'name',    input:'cf-name',    error:'cf-name-error',    support:'cf-name-support',
+      validate:function(v){ return v.trim() ? '' : '＊お名前が入力されていません。お名前を入力してください。'; } },
+    { key:'company', input:'cf-company', error:'cf-company-error', support:'cf-company-support',
+      validate:function(v){ return ''; } },
+    { key:'email',   input:'cf-email',   error:'cf-email-error',   support:'cf-email-support',
+      validate:function(v){
+        v = v.trim();
+        if(!v) return '＊メールアドレスが入力されていません。返信を受け取れるメールアドレスを入力してください。';
+        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return '＊メールアドレスの形式が正しくありません。「@」とドメインを含む完全なアドレスを入力してください（例：name@example.com）。';
+        return '';
+      } },
+    { key:'type',    input:'cf-type',    error:'cf-type-error',    support:'cf-type-support',
+      validate:function(v){ return v ? '' : '＊お問い合わせ種別が選択されていません。一覧から最も近いものを選択してください。'; } },
+    { key:'message', input:'cf-message', error:'cf-message-error', support:'cf-message-support',
+      validate:function(v){ return v.trim() ? '' : '＊お問い合わせ内容が入力されていません。ご相談の概要を入力してください。'; } }
+  ];
+
+  function setError(def, message){
+    var input = document.getElementById(def.input);
+    var errorEl = document.getElementById(def.error);
+    var field = input.closest('.field');
+    errorEl.textContent = message || '';
+    if(message){
+      field.classList.add('has-error');
+      input.setAttribute('aria-invalid','true');
+      input.setAttribute('aria-describedby', def.support + ' ' + def.error);
+    } else {
+      field.classList.remove('has-error');
+      input.removeAttribute('aria-invalid');
+      input.setAttribute('aria-describedby', def.support);
+    }
+  }
+
+  defs.forEach(function(def){
+    var input = document.getElementById(def.input);
+    var eventName = (input.tagName === 'SELECT') ? 'change' : 'input';
+    input.addEventListener(eventName, function(){
+      if(input.closest('.field').classList.contains('has-error')){
+        setError(def, def.validate(input.value));
+      }
+    });
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var errors = [];
+    defs.forEach(function(def){
+      var input = document.getElementById(def.input);
+      var message = def.validate(input.value);
+      setError(def, message);
+      if(message) errors.push({ def:def, message:message });
+    });
+
+    summaryList.innerHTML = '';
+    if(errors.length){
+      summary.classList.add('show');
+      errors.forEach(function(item){
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = '#' + item.def.input;
+        a.textContent = item.message.replace(/^＊/,'');
+        a.addEventListener('click', function(ev){
+          ev.preventDefault();
+          document.getElementById(item.def.input).focus();
+        });
+        li.appendChild(a);
+        summaryList.appendChild(li);
+      });
+      summary.focus();
+      return;
+    }
+    summary.classList.remove('show');
+
+    var value = function(id){ return document.getElementById(id).value.trim(); };
+    var subject = '【お問い合わせ】' + value('cf-type') + '｜K\'s Creative Works ウェブサイト';
+    var body = [
+      'お名前：' + value('cf-name'),
+      '会社名・ブランド名：' + (value('cf-company') || '（未入力）'),
+      'メールアドレス：' + value('cf-email'),
+      'お問い合わせ種別：' + value('cf-type'),
+      '',
+      'お問い合わせ内容：',
+      value('cf-message')
+    ].join('\n');
+    window.location.href = 'mailto:' + MAILTO +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(body);
+  });
+})();
+</script>
 </body>
 </html>
