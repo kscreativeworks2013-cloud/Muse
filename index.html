@@ -35,6 +35,15 @@
   .works li:first-child{border-top:1px solid var(--line)}
   .works .name{font-size:17px}
   .works .kind{color:var(--sub);font-size:13px;letter-spacing:.06em;white-space:nowrap}
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-bottom:14px}
+  .gallery figure{background:var(--card);border:1px solid var(--line);overflow:hidden}
+  .gallery img{width:100%;height:340px;object-fit:cover;object-position:top;display:block}
+  .gallery figure.wide{grid-column:span 2}
+  .gallery figure.wide img{height:340px;object-position:center}
+  .gallery figcaption{padding:14px 16px;font-size:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .gallery figcaption .kind{color:var(--sub);font-size:12px;letter-spacing:.06em}
+  .more-label{color:var(--sub);font-size:12px;letter-spacing:.2em;margin:34px 0 6px}
+  @media (max-width:600px){ .gallery figure.wide{grid-column:span 1} .gallery img{height:300px} }
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
   .card{background:var(--card);border:1px solid var(--line);padding:28px 24px}
   .card h3{font-size:16px;margin-bottom:10px;letter-spacing:.05em}
@@ -81,8 +90,38 @@
   <div class="wrap">
     <div class="sec-en">Selected Works</div>
     <h2>主な実績</h2>
+    <div class="gallery">
+      <figure>
+        <img src="images/work-1.jpg" alt="奥菜恵さん 撮影" loading="lazy">
+        <figcaption><span>女優・奥菜恵さん</span><span class="kind">撮影</span></figcaption>
+      </figure>
+      <figure>
+        <img src="images/work-2.jpg" alt="武藤敬司さん Rakuten Fashion Week Tokyo" loading="lazy">
+        <figcaption><span>武藤敬司さん</span><span class="kind">Rakuten Fashion Week Tokyo</span></figcaption>
+      </figure>
+      <figure>
+        <img src="images/work-3.jpg" alt="南こうせつさん LIVE" loading="lazy">
+        <figcaption><span>南こうせつさん</span><span class="kind">LIVE撮影</span></figcaption>
+      </figure>
+      <figure>
+        <img src="images/work-4.jpg" alt="名取裕子さん 広告撮影" loading="lazy">
+        <figcaption><span>女優・名取裕子さん</span><span class="kind">広告撮影</span></figcaption>
+      </figure>
+      <figure>
+        <img src="images/work-5.jpg" alt="六角精児さん 撮影" loading="lazy">
+        <figcaption><span>六角精児さん</span><span class="kind">撮影</span></figcaption>
+      </figure>
+      <figure>
+        <img src="images/work-6.jpg" alt="ロメロ・ブリット 来日記念イベント" loading="lazy">
+        <figcaption><span>ロメロ・ブリット</span><span class="kind">来日記念イベント撮影</span></figcaption>
+      </figure>
+      <figure class="wide">
+        <img src="images/work-7.jpg" alt="ビューティー広告ショット" loading="lazy">
+        <figcaption><span>ビューティー広告</span><span class="kind">広告撮影</span></figcaption>
+      </figure>
+    </div>
+    <div class="more-label">その他の実績</div>
     <ul class="works">
-      <li><span class="name">女優・名取裕子さん</span><span class="kind">広告撮影</span></li>
       <li><span class="name">女優・奥菜恵さん オフィシャルファンサイト「奥菜's room」</span><span class="kind">撮影</span></li>
       <li><span class="name">宝塚歌劇 男役スター</span><span class="kind">撮影</span></li>
       <li><span class="name">占いコンテンツ「最強視えすぎ鑑定◆Miyoshi」</span><span class="kind">キービジュアル撮影</span></li>
