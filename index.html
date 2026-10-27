@@ -40,8 +40,6 @@
   .gallery img{width:100%;height:340px;object-fit:cover;object-position:top;display:block}
   .gallery figure.wide{grid-column:span 2}
   .gallery figure.wide img{height:340px;object-position:center}
-  .gallery figcaption{padding:14px 16px;font-size:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-  .gallery figcaption .kind{color:var(--sub);font-size:12px;letter-spacing:.06em}
   .more-label{color:var(--sub);font-size:12px;letter-spacing:.2em;margin:34px 0 6px}
   @media (max-width:600px){ .gallery figure.wide{grid-column:span 1} .gallery img{height:300px} }
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
@@ -57,7 +55,6 @@
   .lightbox.open{display:flex}
   .lightbox img{max-width:94vw;max-height:78vh;max-height:76dvh;object-fit:contain;display:block;box-shadow:0 10px 50px rgba(0,0,0,.6)}
   .lb-hint{margin-top:10px;color:var(--sub);font-size:12px;letter-spacing:.08em;text-align:center}
-  .lb-caption{margin-top:16px;color:var(--ink);font-size:14px;text-align:center;max-width:90vw}
   .lb-caption .kind{color:var(--sub);font-size:12px;letter-spacing:.06em;margin-left:10px}
   .lb-count{margin-top:6px;color:var(--sub);font-size:12px;letter-spacing:.18em}
   .lb-btn{position:absolute;background:rgba(20,18,14,.72);border:1px solid var(--line);color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif}
@@ -74,7 +71,6 @@
     .lb-prev{left:18px}
     .lb-next{right:18px}
     .lb-close{top:calc(12px + env(safe-area-inset-top));right:12px;width:48px;height:48px}
-    .lb-caption{margin-top:12px;font-size:13px}
   }
   .contact{text-align:center}
   .contact p{color:var(--sub);max-width:560px;margin:0 auto 12px;font-size:15px}
@@ -143,63 +139,48 @@
     <div class="gallery">
       <figure class="wide">
         <a class="lb-link" href="images/work-7.jpg"><img src="images/work-7.jpg" alt="ビューティー広告ショット" loading="lazy"></a>
-        <figcaption><span>ビューティー広告</span><span class="kind">広告撮影</span></figcaption>
       </figure>
       <figure>
         <a class="lb-link" href="images/work-6.jpg"><img src="images/work-6.jpg" alt="ロメロ・ブリット 来日記念イベント" loading="lazy"></a>
-        <figcaption><span>ロメロ・ブリット</span><span class="kind">来日記念イベント撮影</span></figcaption>
       </figure>
       <figure>
         <a class="lb-link" href="images/work-1.jpg"><img src="images/work-1.jpg" alt="奥菜恵さん オフィシャルファンサイト「奥菜's room」撮影" loading="lazy"></a>
-        <figcaption><span>女優・奥菜恵さん</span><span class="kind">オフィシャルファンサイト「奥菜's room」撮影</span></figcaption>
       </figure>
       <figure>
         <a class="lb-link" href="images/work-2.jpg"><img src="images/work-2.jpg" alt="武藤敬司さん Rakuten Fashion Week Tokyo" loading="lazy"></a>
-        <figcaption><span>武藤敬司さん</span><span class="kind">Rakuten Fashion Week Tokyo</span></figcaption>
       </figure>
       <figure>
         <a class="lb-link" href="images/work-9.jpg"><img src="images/work-9.jpg" alt="ビューティーポートレート" loading="lazy"></a>
-        <figcaption><span>ビューティーポートレート</span><span class="kind">ビューティー撮影</span></figcaption>
       </figure>
       <figure>
         <a class="lb-link" href="images/work-11.jpg"><img src="images/work-11.jpg" alt="ビューティークローズアップ" loading="lazy"></a>
-        <figcaption><span>ビューティークローズアップ</span><span class="kind">ビューティー撮影</span></figcaption>
       </figure>
       <figure>
         <a class="lb-link" href="images/work-12.jpg"><img src="images/work-12.jpg" alt="モノクロポートレート" loading="lazy"></a>
-        <figcaption><span>モノクロポートレート</span><span class="kind">スタジオ撮影</span></figcaption>
       </figure>
       <figure>
         <a class="lb-link" href="images/work-4.jpg"><img src="images/work-4.jpg" alt="名取裕子さん 広告撮影" loading="lazy"></a>
-        <figcaption><span>女優・名取裕子さん</span><span class="kind">広告撮影</span></figcaption>
       </figure>
       <figure>
         <a class="lb-link" href="images/work-13.jpg"><img src="images/work-13.jpg" alt="ファッションエディトリアル" loading="lazy"></a>
-        <figcaption><span>ファッションエディトリアル</span><span class="kind">ファッション撮影</span></figcaption>
       </figure>
       <figure>
         <a class="lb-link" href="images/work-3.jpg"><img src="images/work-3.jpg" alt="南こうせつさん LIVE" loading="lazy"></a>
-        <figcaption><span>南こうせつさん</span><span class="kind">LIVE撮影</span></figcaption>
       </figure>
       <figure>
         <a class="lb-link" href="images/work-10.jpg"><img src="images/work-10.jpg" alt="ポートレート撮影" loading="lazy"></a>
-        <figcaption><span>ポートレート</span><span class="kind">ポートレート撮影</span></figcaption>
       </figure>
       <figure>
         <a class="lb-link" href="images/work-14.jpg"><img src="images/work-14.jpg" alt="メンズポートレート" loading="lazy"></a>
-        <figcaption><span>メンズポートレート</span><span class="kind">ポートレート撮影</span></figcaption>
       </figure>
       <figure>
         <a class="lb-link" href="images/work-15.jpg"><img src="images/work-15.jpg" alt="クローズアップポートレート" loading="lazy"></a>
-        <figcaption><span>クローズアップポートレート</span><span class="kind">ポートレート撮影</span></figcaption>
       </figure>
       <figure>
         <a class="lb-link" href="images/work-8.jpg"><img src="images/work-8.jpg" alt="メンズファッションポートレート" loading="lazy"></a>
-        <figcaption><span>メンズファッションポートレート</span><span class="kind">ファッション撮影</span></figcaption>
       </figure>
       <figure>
         <a class="lb-link" href="images/work-5.jpg"><img src="images/work-5.jpg" alt="六角精児さん 撮影" loading="lazy"></a>
-        <figcaption><span>六角精児さん</span><span class="kind">撮影</span></figcaption>
       </figure>
     </div>
     <div class="more-label">その他の実績</div>
@@ -433,7 +414,6 @@
   <button class="lb-btn lb-prev" id="lbPrev" aria-label="前の写真">‹</button>
   <img id="lbImg" src="" alt="">
   <button class="lb-btn lb-next" id="lbNext" aria-label="次の写真">›</button>
-  <div class="lb-caption" id="lbCaption"></div>
   <div class="lb-count" id="lbCount"></div>
   <div class="lb-hint" id="lbHint"></div>
 </div>
@@ -443,7 +423,6 @@
   var links = Array.prototype.slice.call(document.querySelectorAll('.gallery a.lb-link'));
   var lb = document.getElementById('lightbox');
   var lbImg = document.getElementById('lbImg');
-  var lbCaption = document.getElementById('lbCaption');
   var lbCount = document.getElementById('lbCount');
   var lbHint = document.getElementById('lbHint');
   var current = 0;
@@ -451,18 +430,12 @@
   var coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
   lbHint.textContent = coarse ? '左右にスワイプ／下のボタンで前後の写真へ' : '← → キー／左右のボタンで前後の写真へ';
 
-  function captionHTML(link){
-    var fig = link.closest('figure');
-    var cap = fig ? fig.querySelector('figcaption') : null;
-    return cap ? cap.innerHTML : '';
-  }
   function show(i){
     current = (i + links.length) % links.length;
     var link = links[current];
     var img = link.querySelector('img');
     lbImg.src = link.getAttribute('href');
     lbImg.alt = img ? (img.getAttribute('alt') || '') : '';
-    lbCaption.innerHTML = captionHTML(link);
     lbCount.textContent = (current + 1) + ' / ' + links.length;
   }
   function open(i){
