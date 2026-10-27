@@ -115,6 +115,11 @@
   .submit-btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
   .cform .mail-note{font-size:13px;color:var(--sub);margin:14px 0 0;max-width:none;line-height:1.7}
   .contact-alt{margin-top:56px;padding-top:38px;border-top:1px solid var(--line)}
+  .ig-link{display:inline-flex;align-items:center;gap:11px;color:var(--accent);text-decoration:none;min-height:48px;padding:6px 10px;border:1px solid var(--line);border-radius:999px}
+  .ig-link:hover{border-color:var(--accent)}
+  .ig-link span{font-size:15px;letter-spacing:.03em}
+  .f-ig{display:inline-flex;align-items:center;color:var(--sub);min-height:44px;padding:4px 2px}
+  .f-ig:hover{color:var(--accent)}
   footer{padding:44px 0 54px;border-top:1px solid var(--line);color:var(--sub);font-size:12px;letter-spacing:.1em}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   @media (max-width:600px){ nav a{margin-left:16px} .hero{padding:150px 0 90px} section{padding:64px 0} }
@@ -342,7 +347,7 @@
     <div class="contact-alt">
       <p>フォームからうまく送れない場合は、メールまたは Instagram からもご連絡いただけます。</p>
       <p class="mail"><a href="mailto:kscreativeworks2013@gmail.com">kscreativeworks2013@gmail.com</a></p>
-      <p style="margin-top:22px">Instagram: <a href="https://www.instagram.com/ksphotoswork" target="_blank" rel="noopener" style="color:var(--accent)">@ksphotoswork</a></p>
+      <p style="margin-top:22px"><a class="ig-link" href="https://www.instagram.com/ksphotoswork" target="_blank" rel="noopener" aria-label="Instagram @ksphotoswork"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="0.6" fill="currentColor" stroke="none"/></svg><span>@ksphotoswork</span></a></p>
       <a class="cta" href="https://www.instagram.com/ksphotoswork" target="_blank" rel="noopener">Instagramで相談する</a>
     </div>
   </div>
@@ -351,7 +356,7 @@
 <footer>
   <div class="wrap">
     <div>© 2026 K's Creative Works — Katsutomo Izawa</div>
-    <div>TOKYO, JAPAN</div>
+    <div style="display:flex;align-items:center;gap:16px"><a class="f-ig" href="https://www.instagram.com/ksphotoswork" target="_blank" rel="noopener" aria-label="Instagram @ksphotoswork"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="0.6" fill="currentColor" stroke="none"/></svg></a><span>TOKYO, JAPAN</span></div>
   </div>
 </footer>
 <script>
