@@ -18,6 +18,9 @@
 <meta name="twitter:description" content="東京を拠点にビューティー＆ファッションの広告撮影を行うフォトグラファー、Katsutomo Izawa（K's Creative Works）。広告撮影、ブランドイメージ撮影、AI動画制作。">
 <meta name="twitter:image" content="https://ksphotoswork.com/og-image.jpg">
 <link rel="canonical" href="https://ksphotoswork.com/">
+<link rel="alternate" hreflang="ja" href="https://ksphotoswork.com/">
+<link rel="alternate" hreflang="en" href="https://ksphotoswork.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://ksphotoswork.com/">
 <link rel="icon" type="image/jpeg" href="https://ksphotoswork.com/og-image.jpg">
 <link rel="apple-touch-icon" href="https://ksphotoswork.com/og-image.jpg">
 <script type="application/ld+json">
@@ -105,6 +108,30 @@
   .gallery a.lb-link{display:block;cursor:zoom-in}
   .gallery a.lb-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   .gallery img, .lightbox img{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-user-drag:none}
+  .lang-switch{margin-left:26px;font-size:11px;letter-spacing:.14em;color:var(--sub);white-space:nowrap}
+  .lang-switch .lang-cur{color:var(--accent)}
+  .lang-switch a{margin-left:8px;color:var(--sub);text-decoration:none}
+  .lang-switch a:hover{color:var(--ink)}
+  .lang-switch .sep{margin-left:8px;color:var(--line)}
+  @media (max-width:600px){ .lang-switch{margin-left:14px} .lang-switch a{margin-left:6px} .lang-switch .sep{margin-left:6px} }
+  /* Form confirmation / success views */
+  .cconfirm h3{font-size:17px;letter-spacing:.05em;margin-bottom:6px}
+  .cconfirm .confirm-lead{font-size:13px;color:var(--sub);margin:0 0 24px;max-width:none;line-height:1.7}
+  .confirm-list{border-top:1px solid var(--line);margin-bottom:30px}
+  .confirm-row{display:flex;gap:18px;padding:14px 4px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .confirm-row dt{width:150px;flex:none;font-size:13px;font-weight:600;letter-spacing:.05em;color:var(--sub)}
+  .confirm-row dd{flex:1;min-width:200px;font-size:15px;white-space:pre-wrap;word-break:break-word}
+  .confirm-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .btn-ghost{flex:1;min-height:56px;background:transparent;color:var(--accent);border:1px solid var(--accent);border-radius:4px;font:inherit;font-size:15px;font-weight:600;letter-spacing:.14em;cursor:pointer;padding:14px 20px}
+  .btn-ghost:hover{background:rgba(201,168,106,.12)}
+  .btn-ghost:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+  .confirm-actions .submit-btn{flex:2}
+  .confirm-actions button[disabled]{opacity:.55;cursor:wait}
+  .send-error{display:none;border:1px solid #ff9d94;background:rgba(255,157,148,.07);padding:16px 18px;margin:0 0 24px;font-size:14px;color:#ff9d94;text-align:left}
+  .send-error.show{display:block}
+  .csuccess{border:1px solid var(--accent);padding:34px 28px;text-align:center}
+  .csuccess h3{font-size:18px;letter-spacing:.06em;margin-bottom:12px}
+  .csuccess p{color:var(--sub);font-size:14px;margin:0 auto;max-width:520px}
   /* Lightbox */
   .lightbox{position:fixed;inset:0;height:100vh;height:100dvh;background:rgba(5,4,3,.94);z-index:100;display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px}
   .lightbox.open{display:flex}
@@ -177,6 +204,7 @@
       <a href="#services">SERVICES</a>
       <a href="#about">ABOUT</a>
       <a href="#contact">CONTACT</a>
+      <span class="lang-switch"><span class="lang-cur">JP</span><span class="sep">|</span><a href="/en/" hreflang="en">EN</a></span>
     </nav>
   </div>
 </header>
@@ -335,7 +363,7 @@
     <h2>お問い合わせ</h2>
     <p>撮影のご相談は、下記フォーム、メール、または Instagram の DM からお気軽にどうぞ。</p>
 
-    <form class="cform" id="contactForm" action="mailto:kscreativeworks2013@gmail.com" method="post" enctype="text/plain" novalidate>
+    <form class="cform" id="contactForm" novalidate>
       <p class="form-lead">「<span class="req-mark">※必須</span>」のついた項目は、必ずご入力ください。</p>
 
       <div class="error-summary" id="errorSummary" tabindex="-1">
@@ -383,9 +411,31 @@
         <p class="error" id="cf-message-error"></p>
       </div>
 
-      <button type="submit" class="submit-btn">入力内容をメールで送信する</button>
-      <p class="mail-note">送信ボタンを押すと、お使いのメールソフト（メールアプリ）が開き、入力内容が本文に入った状態で表示されます。内容をご確認のうえ、そのまま送信してください。</p>
+      <button type="submit" class="submit-btn">入力内容を確認する</button>
+      <p class="mail-note">ボタンを押すと確認画面が表示されます。内容をご確認のうえ、送信を確定してください。メールソフトは開きません。</p>
     </form>
+
+    <div class="cform cconfirm" id="confirmView" hidden>
+      <h3>入力内容の確認</h3>
+      <p class="confirm-lead">以下の内容で送信します。よろしければ「この内容で送信する」を押してください。</p>
+      <div class="send-error" id="sendError" role="alert"></div>
+      <dl class="confirm-list">
+        <div class="confirm-row"><dt>お名前</dt><dd id="cv-name"></dd></div>
+        <div class="confirm-row"><dt>会社名・ブランド名</dt><dd id="cv-company"></dd></div>
+        <div class="confirm-row"><dt>メールアドレス</dt><dd id="cv-email"></dd></div>
+        <div class="confirm-row"><dt>お問い合わせ種別</dt><dd id="cv-type"></dd></div>
+        <div class="confirm-row"><dt>お問い合わせ内容</dt><dd id="cv-message"></dd></div>
+      </dl>
+      <div class="confirm-actions">
+        <button type="button" class="btn-ghost" id="backBtn">修正する</button>
+        <button type="button" class="submit-btn" id="sendBtn">この内容で送信する</button>
+      </div>
+    </div>
+
+    <div class="cform csuccess" id="successView" hidden tabindex="-1">
+      <h3>送信が完了しました</h3>
+      <p>お問い合わせを受け付けました。入力いただいたメールアドレス宛に、折り返しご連絡いたします。</p>
+    </div>
 
     <div class="contact-alt">
       <p>フォームからうまく送れない場合は、メールまたは Instagram からもご連絡いただけます。</p>
@@ -404,7 +454,6 @@
 </footer>
 <script>
 (function(){
-  var MAILTO = 'kscreativeworks2013@gmail.com';
   var form = document.getElementById('contactForm');
   var summary = document.getElementById('errorSummary');
   var summaryList = document.getElementById('errorSummaryList');
@@ -484,19 +533,69 @@
     summary.classList.remove('show');
 
     var value = function(id){ return document.getElementById(id).value.trim(); };
-    var subject = '【お問い合わせ】' + value('cf-type') + '｜K\'s Creative Works ウェブサイト';
-    var body = [
-      'お名前：' + value('cf-name'),
-      '会社名・ブランド名：' + (value('cf-company') || '（未入力）'),
-      'メールアドレス：' + value('cf-email'),
-      'お問い合わせ種別：' + value('cf-type'),
-      '',
-      'お問い合わせ内容：',
-      value('cf-message')
-    ].join('\n');
-    window.location.href = 'mailto:' + MAILTO +
-      '?subject=' + encodeURIComponent(subject) +
-      '&body=' + encodeURIComponent(body);
+    document.getElementById('cv-name').textContent = value('cf-name');
+    document.getElementById('cv-company').textContent = value('cf-company') || '（未入力）';
+    document.getElementById('cv-email').textContent = value('cf-email');
+    document.getElementById('cv-type').textContent = value('cf-type');
+    document.getElementById('cv-message').textContent = value('cf-message');
+    form.hidden = true;
+    var confirmView = document.getElementById('confirmView');
+    confirmView.hidden = false;
+    confirmView.scrollIntoView({ behavior:'smooth', block:'start' });
+    document.getElementById('sendBtn').focus();
+  });
+
+  document.getElementById('backBtn').addEventListener('click', function(){
+    document.getElementById('confirmView').hidden = true;
+    form.hidden = false;
+    document.getElementById('sendError').classList.remove('show');
+    document.getElementById('cf-name').focus();
+  });
+
+  document.getElementById('sendBtn').addEventListener('click', function(){
+    var value = function(id){ return document.getElementById(id).value.trim(); };
+    var sendBtn = document.getElementById('sendBtn');
+    var backBtn = document.getElementById('backBtn');
+    var sendError = document.getElementById('sendError');
+    sendBtn.disabled = true; backBtn.disabled = true;
+    sendBtn.textContent = '送信中…';
+    sendError.classList.remove('show');
+    fetch('https://formsubmit.co/ajax/kscreativeworks2013@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _template: 'table',
+        _captcha: 'false',
+        _honey: '',
+        subject: '【ウェブサイト問い合わせ】' + value('cf-type') + '｜K\u2019s Creative Works',
+        name: value('cf-name'),
+        email: value('cf-email'),
+        _replyto: value('cf-email'),
+        'お名前': value('cf-name'),
+        '会社名・ブランド名': value('cf-company') || '（未入力）',
+        'メールアドレス': value('cf-email'),
+        'お問い合わせ種別': value('cf-type'),
+        'お問い合わせ内容': value('cf-message'),
+        '送信元ページ': '日本語版',
+        botcheck: ''
+      })
+    }).then(function(res){ return res.json(); }).then(function(data){
+      if(data && (data.success === true || data.success === 'true')){
+        document.getElementById('confirmView').hidden = true;
+        var sv = document.getElementById('successView');
+        sv.hidden = false;
+        sv.scrollIntoView({ behavior:'smooth', block:'center' });
+        sv.focus();
+      } else {
+        throw new Error('send failed');
+      }
+    }).catch(function(){
+      sendBtn.disabled = false; backBtn.disabled = false;
+      sendBtn.textContent = 'この内容で送信する';
+      sendError.textContent = '送信できませんでした。通信環境をご確認のうえ、もう一度お試しください。うまくいかない場合は、下記のメールアドレスまたは Instagram からご連絡ください。';
+      sendError.classList.add('show');
+      sendError.scrollIntoView({ behavior:'smooth', block:'center' });
+    });
   });
 })();
 </script>
