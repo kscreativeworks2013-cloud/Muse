@@ -133,6 +133,24 @@
   .csuccess{border:1px solid var(--accent);padding:34px 28px;text-align:center}
   .csuccess h3{font-size:18px;letter-spacing:.06em;margin-bottom:12px}
   .csuccess p{color:var(--sub);font-size:14px;margin:0 auto;max-width:520px}
+    /* AI FILM — 写真セクションとの棲み分け：背景色を変え、専用チップと金の境界で生成物であることを視覚的にも明示する */
+  .aifilm{background:var(--bg2)}
+  .aifilm .h2-note{display:inline-block;margin-left:14px;font-size:12px;letter-spacing:.14em;color:#111;background:var(--accent);padding:4px 10px;vertical-align:middle;font-weight:600}
+  .aifilm-lead{max-width:680px;color:var(--sub);font-size:14px;margin:-14px 0 36px}
+  .aifilm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,340px));gap:22px}
+  .aifilm-card{background:var(--card);border:1px solid var(--line);padding:16px 16px 20px}
+  .aifilm-frame{position:relative;aspect-ratio:9/16;background:#000;overflow:hidden}
+  .aifilm-frame img{width:100%;height:100%;object-fit:cover;display:block;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-user-drag:none}
+  .aifilm-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .aifilm-chip{position:absolute;top:10px;left:10px;background:rgba(12,11,9,.82);color:var(--accent);border:1px solid var(--accent);font-size:10px;letter-spacing:.22em;padding:5px 9px;font-family:Georgia,serif}
+  .aifilm-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:72px;height:72px;border-radius:50%;border:1px solid var(--accent);background:rgba(12,11,9,.55);color:var(--accent);cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .aifilm-play:hover{background:var(--accent);color:#111}
+  .aifilm-play:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .aifilm-play-icon{font-size:24px;margin-left:4px}
+  .aifilm-title{font-size:16px;letter-spacing:.05em;margin:16px 0 6px}
+  .aifilm-desc{color:var(--sub);font-size:13px;line-height:1.7}
+  .aifilm-link{margin-top:12px}
+  .aifilm-link a{color:var(--accent);text-decoration:none;font-size:13px;letter-spacing:.08em;border-bottom:1px solid var(--accent);padding-bottom:2px}
   /* Lightbox */
   .lightbox{position:fixed;inset:0;height:100vh;height:100dvh;background:rgba(5,4,3,.94);z-index:100;display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px}
   .lightbox.open{display:flex}
@@ -222,7 +240,7 @@
   <div class="wrap">
     <div class="logo">K'S CREATIVE WORKS <span>/ TOKYO</span></div>
     <nav class="nav-desktop">
-      <a href="#works">WORKS</a>
+      <a href="#works">WORKS</a><a href="#aifilm">AI FILM</a>
       <a href="#services">SERVICES</a>
       <a href="#about">ABOUT</a>
       <a href="#contact">CONTACT</a>
@@ -231,7 +249,7 @@
     <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a class="mm-row" href="#works">WORKS <span class="mm-arrow">→</span></a>
+    <a class="mm-row" href="#works">WORKS <span class="mm-arrow">→</span></a><a class="mm-row" href="#aifilm">AI FILM <span class="mm-arrow">→</span></a>
     <a class="mm-row" href="#services">SERVICES <span class="mm-arrow">→</span></a>
     <a class="mm-row" href="#about">ABOUT <span class="mm-arrow">→</span></a>
     <a class="mm-row" href="#contact">CONTACT <span class="mm-arrow">→</span></a>
@@ -343,6 +361,28 @@
   </div>
 </section>
 
+<!-- AI FILM section (EN) : insert right after the #works closing </section>, before <section id="services"> in en/index.html -->
+<section id="aifilm" class="aifilm">
+  <div class="wrap">
+    <div class="sec-en">AI Film — Generated Samples</div>
+    <h2>AI Film<span class="h2-note">AI-GENERATED SAMPLES</span></h2>
+    <p class="aifilm-lead">Every film in this corner is an AI-generated sample, presented separately from the photography (real shoots). The brands, products and models shown are fictional and do not exist. For actual commissions, the real product is photographed worn by a model, and the film is then produced from those photographs.</p>
+    <div class="aifilm-grid">
+      <article class="aifilm-card">
+        <div class="aifilm-frame" data-embed="https://www.instagram.com/reel/DfA1heXjlDg/embed">
+          <img src="../images/ai-fuyukameria-poster.jpg" alt="Final frame of the AI-generated beauty commercial sample FUYUKAMERIA — a smiling model with a red bottle and a camellia" loading="lazy" draggable="false">
+          <span class="aifilm-chip">AI GENERATED</span>
+          <button type="button" class="aifilm-play" aria-label="Load and play the Instagram post">
+            <span class="aifilm-play-icon" aria-hidden="true">▶</span>
+          </button>
+        </div>
+        <h3 class="aifilm-title">FUYUKAMERIA — MAISON ÉCLAT</h3>
+        <p class="aifilm-desc">A 30-second commercial film sample created for a fictional beauty maison: concept, product design, prompt design and editing.</p>
+        <p class="aifilm-link"><a href="https://www.instagram.com/reel/DfA1heXjlDg/" target="_blank" rel="noopener">View on Instagram<span aria-hidden="true"> →</span></a></p>
+      </article>
+    </div>
+  </div>
+</section>
 <section id="services">
   <div class="wrap">
     <div class="sec-en">Services</div>
@@ -720,6 +760,25 @@
   menu.addEventListener('click',function(e){ if(e.target.closest('a')) close(); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
 })();
+</script>
+<script>
+// AI FILM ファサード：クリックされるまでInstagram埋め込みを読み込まない（初期表示を軽く保つ）
+document.querySelectorAll('.aifilm-frame').forEach(function(frame){
+  var btn = frame.querySelector('.aifilm-play');
+  if(!btn) return;
+  btn.addEventListener('click', function(){
+    var url = frame.getAttribute('data-embed');
+    if(!url) return;
+    var iframe = document.createElement('iframe');
+    iframe.src = url;
+    iframe.title = 'AI-generated film FUYUKAMERIA posted on Instagram';
+    iframe.setAttribute('allowfullscreen','');
+    iframe.setAttribute('loading','lazy');
+    iframe.setAttribute('allow','autoplay; encrypted-media; picture-in-picture');
+    frame.innerHTML = '';
+    frame.appendChild(iframe);
+  });
+});
 </script>
 </body>
 </html>
