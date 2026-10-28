@@ -194,19 +194,48 @@
   footer{padding:44px 0 54px;border-top:1px solid var(--line);color:var(--sub);font-size:12px;letter-spacing:.1em}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   @media (max-width:600px){ nav a{margin-left:16px} .hero{padding:150px 0 90px} section{padding:64px 0} }
+
+  /* === mobile accordion menu === */
+  .menu-btn{display:none;width:48px;height:48px;background:none;border:0;cursor:pointer;position:relative;flex:0 0 auto}
+  .menu-btn span{position:absolute;left:12px;right:12px;height:1.5px;background:var(--accent);transition:transform .3s,opacity .3s}
+  .menu-btn span:nth-child(1){top:19px}
+  .menu-btn span:nth-child(2){top:29px}
+  .menu-btn.open span:nth-child(1){top:24px;transform:rotate(45deg)}
+  .menu-btn.open span:nth-child(2){top:24px;transform:rotate(-45deg)}
+  .mobile-menu{max-height:0;overflow:hidden;transition:max-height .38s ease;background:rgba(12,11,9,.97)}
+  .mobile-menu.open{max-height:420px}
+  .mobile-menu a.mm-row{display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 24px;font-size:14px;letter-spacing:.18em;color:var(--ink);text-decoration:none;border-top:1px solid var(--line)}
+  .mobile-menu a.mm-row:active{background:rgba(201,162,75,.12)}
+  .mobile-menu .mm-arrow{color:var(--accent);font-size:13px}
+  .mobile-menu .mm-lang{display:flex;align-items:center;gap:14px;height:56px;padding:0 24px;border-top:1px solid var(--line);font-size:14px;letter-spacing:.18em}
+  .mobile-menu .mm-lang .lang-cur{color:var(--accent)}
+  .mobile-menu .mm-lang a{color:var(--sub);text-decoration:none;padding:10px 4px}
+  .mobile-menu .mm-lang .sep{color:var(--sub)}
+  @media (max-width:768px){
+    nav.nav-desktop{display:none}
+    .menu-btn{display:block}
+  }
 </style>
 </head>
 <body>
 <header>
   <div class="wrap">
     <div class="logo">K'S CREATIVE WORKS <span>/ TOKYO</span></div>
-    <nav>
+    <nav class="nav-desktop">
       <a href="#works">WORKS</a>
       <a href="#services">SERVICES</a>
       <a href="#about">ABOUT</a>
       <a href="#contact">CONTACT</a>
       <span class="lang-switch"><span class="lang-cur">JP</span><span class="sep">|</span><a href="/en/" hreflang="en">EN</a></span>
     </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a class="mm-row" href="#works">WORKS <span class="mm-arrow">→</span></a>
+    <a class="mm-row" href="#services">SERVICES <span class="mm-arrow">→</span></a>
+    <a class="mm-row" href="#about">ABOUT <span class="mm-arrow">→</span></a>
+    <a class="mm-row" href="#contact">CONTACT <span class="mm-arrow">→</span></a>
+    <div class="mm-lang"><span class="lang-cur">JP</span><span class="sep">|</span><a href="/en/" hreflang="en">EN</a></div>
   </div>
 </header>
 
@@ -674,6 +703,22 @@
     if(Math.abs(dx) > 48){ if(dx < 0) next(); else prev(); }
     touchX = null;
   }, {passive:true});
+})();
+</script>
+
+<script>
+(function(){
+  var btn=document.getElementById('menuBtn'), menu=document.getElementById('mobileMenu');
+  if(!btn||!menu) return;
+  function close(){ menu.classList.remove('open'); btn.classList.remove('open'); btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-label','メニューを開く'); }
+  btn.addEventListener('click',function(){
+    var open=menu.classList.toggle('open');
+    btn.classList.toggle('open',open);
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    btn.setAttribute('aria-label',open?'メニューを閉じる':'メニューを開く');
+  });
+  menu.addEventListener('click',function(e){ if(e.target.closest('a')) close(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
 })();
 </script>
 </body>
