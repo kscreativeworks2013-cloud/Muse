@@ -25,7 +25,6 @@ EN_IMG_ALT = 'Katsutomo Izawa — Tokyo beauty &amp; fashion advertising photogr
 rep('<html lang="ja">', '<html lang="en">')
 rep('src="images/', 'src="../images/', cnt=-1)
 rep('data-full="images/', 'data-full="../images/', cnt=-1)
-rep('href="images/', 'href="../images/', cnt=-1)
 rep('<title>' + JA_TITLE + '</title>',
     '<title>' + EN_TITLE + '</title>')
 rep('<meta name="description" content="東京を拠点に、ビューティー＆ファッションの広告撮影・ブランドイメージ撮影・人物撮影を行うフォトグラファー Katsutomo Izawa（K\'s Creative Works）。2013年から活動。写真をもとにしたAI動画生成にも対応。撮影のご相談はお問い合わせフォームから。">',
