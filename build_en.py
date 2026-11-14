@@ -77,15 +77,13 @@ rep('<button class="menu-btn" id="menuBtn" aria-label="メニューを開く"',
     '<button class="menu-btn" id="menuBtn" aria-label="Open menu"')
 
 # --- ヒーロー ---
-rep('<span class="thin">東京のビューティー＆ファッション広告撮影フォトグラファー</span>',
-    '<span class="thin">Beauty &amp; Fashion Advertising Photographer in Tokyo</span>')
-rep('<p>東京を拠点に、ビューティー＆ファッションの広告撮影を専門とするフォトグラファー。ブランドと商品のイメージ撮影、人物撮影から、撮影・編集・ディレクションの一貫対応、写真をもとにしたAI動画生成まで。化粧品をはじめとする商品撮影、人物のポートレート撮影にも対応します。</p>',
-    '<p>A Tokyo-based photographer specialising in beauty and fashion advertising. From brand and product imagery to portraits, with direction, shooting and editing handled end to end — including AI film production based on still photography. Also available for product photography, including cosmetics, and portrait sessions.</p>')
+rep('<p>東京を拠点に、ビューティー＆ファッションの広告撮影を専門とするフォトグラファー。ブランドと商品のイメージ撮影、人物撮影から、撮影・編集・ディレクションの一貫対応、写真をもとにしたAI動画生成まで。</p>',
+    '<p>A Tokyo-based photographer specialising in beauty and fashion advertising. From brand and product imagery to portraits, with direction, shooting and editing handled end to end — including AI film production based on still photography.</p>')
 rep('<a class="cta" href="#contact">撮影のご相談はこちら</a>',
     '<a class="cta" href="#contact">Enquire about a shoot</a>')
 
 # --- ギャラリー見出し・alt ---
-rep('<h2>ビューティー・ファッション広告撮影の実績</h2>', '<h2>Selected Works</h2>')
+rep('<h2>主な実績</h2>', '<h2>Selected Works</h2>')
 rep('<div class="more-label">その他の実績</div>', '<div class="more-label">MORE CREDITS</div>')
 ALTS = [
  ('ビューティー広告撮影、青い水面を背景にした後ろ姿のポートレート', 'Beauty advertising photography — back-view portrait against blue water'),
@@ -146,7 +144,7 @@ rep('<p class="aifilm-desc">架空のリップスティックブランド『GREN
 rep('>Instagramで見る<span aria-hidden="true"> →</span></a>', '>View on Instagram<span aria-hidden="true"> →</span></a>', cnt=-1)
 
 # --- サービス ---
-rep('<h2>撮影メニュー（広告・ブランド・人物・AI動画生成）</h2>', '<h2>Services</h2>')
+rep('<h2>対応メニュー</h2>', '<h2>Services</h2>')
 rep('<h3>ビューティー＆ファッション広告撮影</h3>\n        <p>コスメ、ジュエリー、ファッションブランドの広告ビジュアル撮影。商品の質感とモデルの表情を両立させる撮影設計を行います。</p>',
     '<h3>Beauty &amp; Fashion Advertising Photography</h3>\n        <p>Advertising visuals for cosmetics, jewellery and fashion brands — shoot design that holds both the texture of the product and the expression of the model.</p>')
 rep('<h3>ブランド・商品イメージ撮影</h3>\n        <p>ブランドの世界観に沿ったイメージカット、商品撮影、イベント・プレビューの記録撮影。</p>',
