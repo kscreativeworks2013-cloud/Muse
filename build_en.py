@@ -106,6 +106,7 @@ ALTS = [
  ('ジャズライブ撮影', 'Jazz live photography'),
  ('ライブステージ撮影', 'Live stage photography'),
  ('夜のイルミネーションを背景にしたポートレート', 'Portrait against night illuminations'),
+ ('ビューティーポートレート、白背景のハイキー撮影。両手を頬に添えた正面のクローズアップ', 'Beauty portrait in high-key white light, front close-up with both hands resting against her cheeks'),
  ('淡いピンクのニットを着たポートレートのクローズアップ', 'Close-up portrait in a pale pink knit'),
  ('ボブヘアのクローズアップポートレート', 'Close-up portrait with a bob hairstyle'),
  ('男性デュオのポートレート', 'Male duo portrait'),
